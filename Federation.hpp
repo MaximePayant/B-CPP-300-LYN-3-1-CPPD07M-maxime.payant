@@ -60,9 +60,9 @@ namespace Federation
                 void setupCore(WarpSystem::Core *coreReactor);
                 void checkCore() const;
                 void promote(Captain *captain);
+                bool move(Destination d);
                 bool move(int warp, Destination d);
                 bool move(int warp);
-                bool move(Destination d);
                 bool move();
                 int getShield();
                 void setShield(int shield);
