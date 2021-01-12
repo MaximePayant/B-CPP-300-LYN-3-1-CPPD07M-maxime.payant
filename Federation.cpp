@@ -213,7 +213,7 @@ _name(name)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Independant Ship
+/// Independent Ship
 //
 Federation::Ship::Ship(int length, int width, std::string name) :
 _length(length),
@@ -224,7 +224,7 @@ _home(VULCAN),
 _location(_home)
 {
     std::cout
-        << "The independant ship "
+        << "The independent ship "
         << _name
         << " just finished its construction."
         << std::endl
