@@ -10,6 +10,11 @@
 
 #include <iostream>
 
+namespace Borg
+{
+    class Ship;
+}
+
 #include "Destination.hpp"
 #include "WarpSystem.hpp"
 #include "Borg.hpp"
@@ -97,6 +102,7 @@ namespace Federation
             Ship(int length, int width, std::string name);
             void setupCore(WarpSystem::Core *coreReactor);
             void checkCore() const;
+            WarpSystem::Core *getCore();
             bool move(int warp, Destination d);
             bool move(int warp);
             bool move(Destination d);

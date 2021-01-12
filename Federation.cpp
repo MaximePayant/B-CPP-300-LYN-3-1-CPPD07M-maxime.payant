@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// Starfleet Ship
 //
-Federation::Starfleet::Ship::Ship(int length, int width, std::string name, short maxWarp, int torpedo = 0) :
+Federation::Starfleet::Ship::Ship(int length, int width, std::string name, short maxWarp, int torpedo) :
 _length(length),
 _width(width),
 _name(name),
@@ -129,15 +129,22 @@ void Federation::Starfleet::Ship::setTorpedo(int torpedo)
 
 void Federation::Starfleet::Ship::fire(Borg::Ship *target)
 {
-    if (_photonTorpedo)
+    if (_photonTorpedo) {
         std::cout
             << _name
-            << ":  Firing  on  target. [TORPEDO] torpedoes  remaining."
+            << ": Firing on target. "
+            <<  _photonTorpedo
+            << " torpedoes remaining."
             << std::endl;
+        _photonTorpedo -= 1;
+        target->setShield(target->getShield() - 50);
+    }
     else
         std::cout
             << _name
-            << ": No more  torpedo  to fire , [CAPTAIN  NAME]!"
+            << ": No more torpedo to fire, "
+            << _captain->getName()
+            << "!"
             << std::endl;
 }
 
@@ -146,17 +153,26 @@ void Federation::Starfleet::Ship::fire(int torpedoes, Borg::Ship *target)
     if (_photonTorpedo < torpedoes)
         std::cout
             << _name
-            << ": No enough torpedoes  to fire , [CAPTAIN  NAME]!"
+            << ": No enough torpedoes to fire, "
+            << _captain->getName()
+            << "!"
             << std::endl;
-    else if (_photonTorpedo)
+    else if (_photonTorpedo) {
         std::cout
             << _name
-            << ":  Firing on target. [TORPEDO] torpedoes  remaining."
+            << ": Firing on target. "
+            <<  _photonTorpedo
+            << " torpedoes remaining."
             << std::endl;
+        _photonTorpedo -= torpedoes;
+        target->setShield(target->getShield() - (50 * torpedoes));
+    }
     else
         std::cout
             << _name
-            << ": No more torpedo to fire, [CAPTAIN  NAME]!"
+            << ": No more torpedo to fire, "
+            << _captain->getName()
+            << "!"
             << std::endl;
 }
 
@@ -237,6 +253,11 @@ void Federation::Ship::checkCore() const
         << (_coreReactor->checkReactor()->isStable() ? "stable" : "unstable")
         << " at the time."
         << std::endl;
+}
+
+WarpSystem::Core *Federation::Ship::getCore()
+{
+    return (_coreReactor);
 }
 
 bool Federation::Ship::move(int warp, Destination d)
