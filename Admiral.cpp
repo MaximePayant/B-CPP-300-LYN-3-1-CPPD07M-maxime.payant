@@ -15,7 +15,7 @@ _name(name)
     std::cout
         << "Admiral "
         << _name
-        << " ready  for  action."
+        << " ready for action."
         << std::endl;
 }
 
@@ -27,7 +27,7 @@ bool Federation::Starfleet::Admiral::move(Federation::Starfleet::Ship *ship, Des
 void Federation::Starfleet::Admiral::fire(Federation::Starfleet::Ship *ship, Borg::Ship *target)
 {
     std::cout
-        << "On order  from  Admiral "
+        << "On order from Admiral "
         << _name
         << ":"
         << std::endl;
