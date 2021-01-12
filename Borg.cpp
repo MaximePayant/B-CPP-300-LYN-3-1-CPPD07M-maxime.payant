@@ -102,22 +102,22 @@ void Borg::Ship::setRepair(short repair)
 
 void Borg::Ship::fire(Federation::Starfleet::Ship *target)
 {
-    target->setShield(target->getShield() - _weaponFrequency);
     std::cout
         << "Firing on target with "
         << _weaponFrequency
         << "GW frequency."
         << std::endl;
+    target->setShield(target->getShield() - _weaponFrequency);
 }
 
 void Borg::Ship::fire(Federation::Ship *target)
 {
-    target->getCore()->checkReactor()->setStability(false);
     std::cout
         << "Firing on target with "
         << _weaponFrequency
         << "GW frequency."
         << std::endl;
+    target->getCore()->checkReactor()->setStability(false);
 }
 
 void Borg::Ship::repair()

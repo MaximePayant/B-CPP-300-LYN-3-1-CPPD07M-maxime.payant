@@ -130,13 +130,13 @@ void Federation::Starfleet::Ship::setTorpedo(int torpedo)
 void Federation::Starfleet::Ship::fire(Borg::Ship *target)
 {
     if (_photonTorpedo) {
+        _photonTorpedo -= 1;
         std::cout
             << _name
             << ": Firing on target. "
             <<  _photonTorpedo
             << " torpedoes remaining."
             << std::endl;
-        _photonTorpedo -= 1;
         target->setShield(target->getShield() - 50);
     }
     else
@@ -158,13 +158,13 @@ void Federation::Starfleet::Ship::fire(int torpedoes, Borg::Ship *target)
             << "!"
             << std::endl;
     else if (_photonTorpedo) {
+        _photonTorpedo -= torpedoes;
         std::cout
             << _name
             << ": Firing on target. "
             <<  _photonTorpedo
             << " torpedoes remaining."
             << std::endl;
-        _photonTorpedo -= torpedoes;
         target->setShield(target->getShield() - (50 * torpedoes));
     }
     else

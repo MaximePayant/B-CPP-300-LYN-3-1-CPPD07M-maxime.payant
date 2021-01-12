@@ -12,6 +12,11 @@ _name(name)
 {
     movePtr = &Federation::Starfleet::Ship::move;
     firePtr = &Federation::Starfleet::Ship::fire;
+    std::cout
+        << "Admiral "
+        << _name
+        << " ready  for  action."
+        << std::endl;
 }
 
 bool Federation::Starfleet::Admiral::move(Federation::Starfleet::Ship *ship, Destination dest)
